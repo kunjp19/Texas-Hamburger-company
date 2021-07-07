@@ -3,22 +3,22 @@ services:
   app:
     container_name: app-thc-mysql
     image: 'thc:latest'
-    build: ./
     ports:
     - "8080:8080"
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/thc
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Kunj@3498
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/thc
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=user
 
   db:
-    image: 'mysql:latest'
+    image: 'mysql:5.7'
     container_name: db
     ports:
-      - "5433:5432"
-    environment:clear
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=Kunj@3498
-      - MYSQL_DB=thc
+      - 3307:3306
+    environment:
+      - MYSQL_USER=user
+      - MySQL_PASSWORD=user
+      - MYSQL_DATABASE=thc
+
