@@ -4,5 +4,5 @@ public enum LocationStatus {
 
     OPEN,
     CLOSE,
-    COMMINGSOON
+    COMINGSOON
 }
