@@ -8,7 +8,6 @@ node{
         checkout scn
 
         def GIT_COMMIT = sh(returnStdout: true, script: "git rev-perse HEAD").trim().take(7)
-        DOCKER_IMAGE_VERSION = "${BUILD_NUMBER-${GIT_COMMIT}"
     }
 
     stage('Run container on server'){
