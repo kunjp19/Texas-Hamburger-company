@@ -10,4 +10,4 @@
 ## NOTE
 Navigate to http://localhost:8080/api/swagger-ui.html#/ to view the Swagger Documentation
 
-Refer the enums package to know the more about Entities, allowed methods and get the data.
+Refer the main packages to know the more about Entities, allowed methods.
