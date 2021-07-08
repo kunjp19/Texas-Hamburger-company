@@ -6,7 +6,6 @@ node{
 
     stage("git checkout"){
         checkout scn
-
         def GIT_COMMIT = sh(returnStdout: true, script: "git rev-parse HEAD").trim().take(7)
     }
 
@@ -16,6 +15,8 @@ node{
             sh "docker system prune"
             sh "docker-compose up --build"
         }
+
+
 
         cache(e){
             error "Service update failed"
