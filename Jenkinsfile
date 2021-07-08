@@ -7,14 +7,14 @@ node{
     stage("git checkout"){
         checkout scn
 
-        def GIT_COMMIT = sh(returnStdout: true, script: "git rev-perse HEAD").trim().take(7)
+        def GIT_COMMIT = sh(returnStdout: true, script: "git rev-parse HEAD").trim().take(7)
     }
 
     stage('Run container on server'){
         try{
             sh "docker-compose down"
             sh "docker system prune"
-            sh "docker-compose up --build -d"
+            sh "docker-compose up --build"
         }
 
         cache(e){

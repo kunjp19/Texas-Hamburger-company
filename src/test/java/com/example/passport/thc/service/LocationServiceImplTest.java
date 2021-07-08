@@ -15,14 +15,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class LocationServiceImplTest{
-    private Locations locationUpdate;
-    private Object List;
 
     @Bean
     public LocationService getService(){return new LocationServiceImpl();}
@@ -60,7 +59,7 @@ public class LocationServiceImplTest{
         locationsUpdate.setZipCode(94542);
         locationsUpdate.setLocationStatus("CLOSED");
 
-        Mockito.when(locationRepository.findAll()).thenReturn((Iterable<Locations>) locations);
+        Mockito.when(locationRepository.findAll()).thenReturn(Collections.singletonList(locations));
         Mockito.when(locationRepository.findById(locations.getLocationId())).thenReturn(Optional.of(locations));
         Mockito.when(locationRepository.save(locations)).thenReturn(locations);
         Mockito.when(locationRepository.save(locationsUpdate)).thenReturn(locationsUpdate);
@@ -92,6 +91,7 @@ public class LocationServiceImplTest{
 
     @Test
     public void update() {
+        Locations locationUpdate = new Locations();
         Locations update = locationService.updateLocation(locationsUpdate);
         Assert.assertEquals("Failed to update order", locationUpdate, update);
     }
